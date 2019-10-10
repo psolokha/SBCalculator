@@ -105,10 +105,4 @@ public class CalculatorPage extends AbstractIndexPage{
         return Double.parseDouble(checkRate.getText().substring(0, checkRate.getText().length()-1).replace(" ", "").replace(',', '.')) == value;
     }
 
-
-
-    public void printTotalPrice() {
-        System.out.println(Integer.parseInt(confirmTotalPrice.getText().substring(0, confirmTotalPrice.getText().length()-1).replace(" ", "")));
-    }
-
 }

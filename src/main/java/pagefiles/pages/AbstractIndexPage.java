@@ -33,6 +33,7 @@ public abstract class AbstractIndexPage {
     }
 
     public void closeCookieWarning() {
+        checkOtherWindow();
         WebElement cookieWarning = driver.findElement(By.xpath("//a[contains(@class, 'cookie')]"));
         waitForElementVisibility(cookieWarning);
         waitForElemenIsClickable(cookieWarning);
@@ -41,6 +42,10 @@ public abstract class AbstractIndexPage {
 
     void waitForChanges(String value, WebElement element) {
         new WebDriverWait(driver, 3).until(webDriver -> !value.equals(element.getText()));
+    }
+
+    private void checkOtherWindow() {
+        if (driver.getWindowHandles().size() > 1) driver.close();
     }
 
 }
