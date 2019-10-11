@@ -1,4 +1,3 @@
-import io.qameta.allure.Step;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Test;
@@ -8,7 +7,7 @@ import pagefiles.pages.CalculatorPage;
 public class TestFeatures {
 
 
-    @Step("First test")
+
     @Test
     public void simpleTest() {
 

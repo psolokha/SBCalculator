@@ -50,7 +50,7 @@ public class CalculatorPage extends AbstractIndexPage{
         String tmpValue = checkRate.getText();
         waitForElemenIsClickable(youngFamilyCheckbox);
         youngFamilyCheckbox.click();
-        new Actions(driver).pause(200);
+        new Actions(driver).pause(500);
         waitForChanges(tmpValue, checkRate);
         if (tmpClass.equals(driver.findElement(By.xpath("//input[@data-test-id = 'youngFamilyDiscount']/ancestor::label")).getAttribute("class"))) tickYoungFamily();
     }
@@ -60,7 +60,7 @@ public class CalculatorPage extends AbstractIndexPage{
         String tmpValue = checkRate.getText();
         waitForElemenIsClickable(paidToSBCardCheckbox);
         paidToSBCardCheckbox.click();
-        new Actions(driver).pause(200);
+        new Actions(driver).pause(500);
         waitForElementVisibility(confirmEarningsCheckbox);
         waitForChanges(tmpValue, checkRate);
         if (tmpClass.equals(driver.findElement(By.xpath("//input[@data-test-id = 'paidToCard']/ancestor::label")).getAttribute("class"))) tickPaidToSBCard();
@@ -76,7 +76,7 @@ public class CalculatorPage extends AbstractIndexPage{
         String tmpValue = confirmTotalPrice.getText();
         totalPriceField.clear();
         totalPriceField.sendKeys(String.valueOf(price));
-        new Actions(driver).pause(200);
+        new Actions(driver).pause(500);
         waitForChanges(tmpValue, confirmTotalPrice);
         if(Integer.parseInt(totalPriceField.getAttribute("value").substring(0, totalPriceField.getAttribute("value").length()-1).replace(" ", "")) != price) setFullPrice(price);
     }
@@ -85,7 +85,7 @@ public class CalculatorPage extends AbstractIndexPage{
         String tmpValue = confirmTotalPrice.getText();
         firstPaymentField.clear();
         firstPaymentField.sendKeys(String.valueOf(payment));
-        new Actions(driver).pause(200);
+        new Actions(driver).pause(500);
         waitForChanges(tmpValue, confirmTotalPrice);
         if(Integer.parseInt(firstPaymentField.getAttribute("value").substring(0, firstPaymentField.getAttribute("value").length()-1).replace(" ", "")) != payment) setFirstPayment(payment);
     }
@@ -94,7 +94,7 @@ public class CalculatorPage extends AbstractIndexPage{
         String tmpValue = confirmTotalPrice.getText();
         termField.clear();
         termField.sendKeys(String.valueOf(term));
-        new Actions(driver).pause(200);
+        new Actions(driver).pause(500);
         waitForChanges(tmpValue, confirmTotalPrice);
         if(Integer.parseInt(termField.getAttribute("value").substring(0, termField.getAttribute("value").length()-3).replace(" ", "")) != term) setTermPayout(term);
     }

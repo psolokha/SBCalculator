@@ -36,7 +36,11 @@ public abstract class AbstractIndexPage {
 //    void scrollTo(WebElement element) {
 //        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
 //    }
-//
+
+       public void scrollDown() {
+           ((JavascriptExecutor)driver).executeScript("window.scrollBy(0,30)");
+        }
+
 //    void goTo(WebElement element) {
 //        new Actions(driver).moveToElement(element).pause(100).build().perform();
 //    }
@@ -55,6 +59,7 @@ public abstract class AbstractIndexPage {
 
     private void checkOtherWindow() {
         if (driver.getWindowHandles().size() > 1) driver.close();
+
     }
 
 }
