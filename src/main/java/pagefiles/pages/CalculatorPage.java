@@ -1,5 +1,6 @@
 package pagefiles.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -45,20 +46,24 @@ public class CalculatorPage extends AbstractIndexPage{
     }
 
     public void tickYoungFamily() {
+        String tmpClass = driver.findElement(By.xpath("//input[@data-test-id = 'youngFamilyDiscount']/ancestor::label")).getAttribute("class");
         String tmpValue = checkRate.getText();
         waitForElemenIsClickable(youngFamilyCheckbox);
         youngFamilyCheckbox.click();
         new Actions(driver).pause(200);
         waitForChanges(tmpValue, checkRate);
+        if (tmpClass.equals(driver.findElement(By.xpath("//input[@data-test-id = 'youngFamilyDiscount']/ancestor::label")).getAttribute("class"))) tickYoungFamily();
     }
 
     public void tickPaidToSBCard() {
+        String tmpClass = driver.findElement(By.xpath("//input[@data-test-id = 'paidToCard']/ancestor::label")).getAttribute("class");
         String tmpValue = checkRate.getText();
         waitForElemenIsClickable(paidToSBCardCheckbox);
         paidToSBCardCheckbox.click();
         new Actions(driver).pause(200);
         waitForElementVisibility(confirmEarningsCheckbox);
         waitForChanges(tmpValue, checkRate);
+        if (tmpClass.equals(driver.findElement(By.xpath("//input[@data-test-id = 'paidToCard']/ancestor::label")).getAttribute("class"))) tickPaidToSBCard();
     }
 
     public boolean isVisibleConfirmEarnings() {
@@ -90,9 +95,8 @@ public class CalculatorPage extends AbstractIndexPage{
         termField.clear();
         termField.sendKeys(String.valueOf(term));
         new Actions(driver).pause(200);
-        //termField.sendKeys(Keys.TAB);
         waitForChanges(tmpValue, confirmTotalPrice);
-        if(Integer.parseInt(termField.getAttribute("value").substring(0, termField.getAttribute("value").length()-1).replace(" ", "")) != term) setTermPayout(term);
+        if(Integer.parseInt(termField.getAttribute("value").substring(0, termField.getAttribute("value").length()-3).replace(" ", "")) != term) setTermPayout(term);
     }
 
     public boolean checkTotalPriceIs(int value) {

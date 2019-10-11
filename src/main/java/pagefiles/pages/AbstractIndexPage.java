@@ -1,6 +1,7 @@
 package pagefiles.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -31,6 +32,14 @@ public abstract class AbstractIndexPage {
     void waitForElemenIsClickable(WebElement element) {
         new WebDriverWait(driver, 20).until(ExpectedConditions.elementToBeClickable(element));
     }
+
+//    void scrollTo(WebElement element) {
+//        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
+//    }
+//
+//    void goTo(WebElement element) {
+//        new Actions(driver).moveToElement(element).pause(100).build().perform();
+//    }
 
     public void closeCookieWarning() {
         checkOtherWindow();

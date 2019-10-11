@@ -31,7 +31,11 @@
             <artifactId>selenium-java</artifactId>
             <version>3.141.59</version>
         </dependency>
-
+        <dependency>
+            <groupId>ru.yandex.qatools.allure</groupId>
+            <artifactId>allure-report-builder</artifactId>
+            <version>2.3</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -83,7 +87,7 @@
                     <properties>
                         <allure.issues.tracker.pattern>http://example.com/%s</allure.issues.tracker.pattern>
                     </properties>
-                    <reportVersion>2.6.0</reportVersion>
+                    <reportVersion>2.7.0</reportVersion>
                 </configuration>
             </plugin>
         </plugins>
