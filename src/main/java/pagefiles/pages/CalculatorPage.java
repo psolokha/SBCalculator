@@ -1,7 +1,7 @@
 package pagefiles.pages;
 
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 public class CalculatorPage extends AbstractIndexPage{
@@ -48,6 +48,7 @@ public class CalculatorPage extends AbstractIndexPage{
         String tmpValue = checkRate.getText();
         waitForElemenIsClickable(youngFamilyCheckbox);
         youngFamilyCheckbox.click();
+        new Actions(driver).pause(200);
         waitForChanges(tmpValue, checkRate);
     }
 
@@ -55,6 +56,7 @@ public class CalculatorPage extends AbstractIndexPage{
         String tmpValue = checkRate.getText();
         waitForElemenIsClickable(paidToSBCardCheckbox);
         paidToSBCardCheckbox.click();
+        new Actions(driver).pause(200);
         waitForElementVisibility(confirmEarningsCheckbox);
         waitForChanges(tmpValue, checkRate);
     }
@@ -69,24 +71,28 @@ public class CalculatorPage extends AbstractIndexPage{
         String tmpValue = confirmTotalPrice.getText();
         totalPriceField.clear();
         totalPriceField.sendKeys(String.valueOf(price));
-        totalPriceField.sendKeys(Keys.TAB);
+        new Actions(driver).pause(200);
         waitForChanges(tmpValue, confirmTotalPrice);
+        if(Integer.parseInt(totalPriceField.getAttribute("value").substring(0, totalPriceField.getAttribute("value").length()-1).replace(" ", "")) != price) setFullPrice(price);
     }
 
     public void setFirstPayment(int payment) {
         String tmpValue = confirmTotalPrice.getText();
         firstPaymentField.clear();
         firstPaymentField.sendKeys(String.valueOf(payment));
-        firstPaymentField.sendKeys(Keys.TAB);
+        new Actions(driver).pause(200);
         waitForChanges(tmpValue, confirmTotalPrice);
+        if(Integer.parseInt(firstPaymentField.getAttribute("value").substring(0, firstPaymentField.getAttribute("value").length()-1).replace(" ", "")) != payment) setFirstPayment(payment);
     }
 
     public void setTermPayout(int term) {
         String tmpValue = confirmTotalPrice.getText();
         termField.clear();
         termField.sendKeys(String.valueOf(term));
-        termField.sendKeys(Keys.TAB);
+        new Actions(driver).pause(200);
+        //termField.sendKeys(Keys.TAB);
         waitForChanges(tmpValue, confirmTotalPrice);
+        if(Integer.parseInt(termField.getAttribute("value").substring(0, termField.getAttribute("value").length()-1).replace(" ", "")) != term) setTermPayout(term);
     }
 
     public boolean checkTotalPriceIs(int value) {

@@ -41,7 +41,7 @@ public abstract class AbstractIndexPage {
     }
 
     void waitForChanges(String value, WebElement element) {
-        new WebDriverWait(driver, 3).until(webDriver -> !value.equals(element.getText()));
+        new WebDriverWait(driver, 5).until(webDriver -> !value.equals(element.getText()));
     }
 
     private void checkOtherWindow() {

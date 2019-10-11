@@ -1,9 +1,14 @@
+import io.qameta.allure.Step;
+import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Test;
+import pagefiles.InitDriver;
 import pagefiles.pages.CalculatorPage;
 
 public class TestFeatures {
 
+
+    @Step("First test")
     @Test
     public void simpleTest() {
 
@@ -20,8 +25,13 @@ public class TestFeatures {
         Assert.assertTrue(calc.checkTotalPriceIs(2122000));
         Assert.assertTrue(calc.checkMonthPayment(17998));
         Assert.assertTrue(calc.checkRequiredIncome(29997));
-        Assert.assertTrue(calc.checkRate(11.));
+        Assert.assertFalse(calc.checkRate(11.));
 
+    }
+
+    @AfterClass
+    public static void closeDriver(){
+        InitDriver.getInstance().close();
     }
 
 }
