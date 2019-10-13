@@ -50,7 +50,8 @@ public abstract class AbstractIndexPage {
         WebElement cookieWarning = driver.findElement(By.xpath("//a[contains(@class, 'cookie')]"));
         waitForElementVisibility(cookieWarning);
         waitForElemenIsClickable(cookieWarning);
-        cookieWarning.click();
+        if (cookieWarning.isDisplayed()) cookieWarning.click();
+        else closeCookieWarning();
     }
 
     void waitForChanges(String value, WebElement element) {
