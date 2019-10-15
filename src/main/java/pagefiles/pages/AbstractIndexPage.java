@@ -37,13 +37,17 @@ public abstract class AbstractIndexPage {
 //        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
 //    }
 
-       public void scrollDown() {
-           ((JavascriptExecutor)driver).executeScript("window.scrollBy(0,30)");
-        }
+//       public void scrollDown() {
+//           ((JavascriptExecutor)driver).executeScript("window.scrollBy(0,30)");
+//        }
 
 //    void goTo(WebElement element) {
 //        new Actions(driver).moveToElement(element).pause(100).build().perform();
 //    }
+
+    void goTo(WebElement element) {
+        new Actions(driver).moveToElement(element).pause(200).perform();
+    }
 
     public void closeCookieWarning() {
         checkOtherWindow();

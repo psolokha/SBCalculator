@@ -52,6 +52,7 @@ public class CalculatorPage extends AbstractIndexPage{
         youngFamilyCheckbox.click();
         new Actions(driver).pause(500);
         waitForChanges(tmpValue, checkRate);
+        new Actions(driver).pause(500);
         if (tmpClass.equals(driver.findElement(By.xpath("//input[@data-test-id = 'youngFamilyDiscount']/ancestor::label")).getAttribute("class"))) tickYoungFamily();
     }
 
@@ -63,6 +64,7 @@ public class CalculatorPage extends AbstractIndexPage{
         new Actions(driver).pause(500);
         waitForElementVisibility(confirmEarningsCheckbox);
         waitForChanges(tmpValue, checkRate);
+        new Actions(driver).pause(500);
         if (tmpClass.equals(driver.findElement(By.xpath("//input[@data-test-id = 'paidToCard']/ancestor::label")).getAttribute("class"))) tickPaidToSBCard();
     }
 
@@ -78,6 +80,7 @@ public class CalculatorPage extends AbstractIndexPage{
         totalPriceField.sendKeys(String.valueOf(price));
         new Actions(driver).pause(500);
         waitForChanges(tmpValue, confirmTotalPrice);
+        new Actions(driver).pause(500);
         if(Integer.parseInt(totalPriceField.getAttribute("value").substring(0, totalPriceField.getAttribute("value").length()-1).replace(" ", "")) != price) setFullPrice(price);
     }
 
@@ -87,6 +90,7 @@ public class CalculatorPage extends AbstractIndexPage{
         firstPaymentField.sendKeys(String.valueOf(payment));
         new Actions(driver).pause(500);
         waitForChanges(tmpValue, confirmTotalPrice);
+        new Actions(driver).pause(500);
         if(Integer.parseInt(firstPaymentField.getAttribute("value").substring(0, firstPaymentField.getAttribute("value").length()-1).replace(" ", "")) != payment) setFirstPayment(payment);
     }
 
@@ -96,22 +100,27 @@ public class CalculatorPage extends AbstractIndexPage{
         termField.sendKeys(String.valueOf(term));
         new Actions(driver).pause(500);
         waitForChanges(tmpValue, confirmTotalPrice);
+        new Actions(driver).pause(500);
         if(Integer.parseInt(termField.getAttribute("value").substring(0, termField.getAttribute("value").length()-3).replace(" ", "")) != term) setTermPayout(term);
     }
 
     public boolean checkTotalPriceIs(int value) {
+        new Actions(driver).pause(500);
         return Integer.parseInt(confirmTotalPrice.getText().substring(0, confirmTotalPrice.getText().length()-1).replace(" ", "")) == value;
     }
 
     public boolean checkMonthPayment(int value) {
+        new Actions(driver).pause(500);
         return Integer.parseInt(checkMonthPayment.getText().substring(0, checkMonthPayment.getText().length()-1).replace(" ", "")) == value;
     }
 
     public boolean checkRequiredIncome(int value) {
+        new Actions(driver).pause(500);
         return Integer.parseInt(checkRequiredIncome.getText().substring(0, checkRequiredIncome.getText().length()-1).replace(" ", "")) == value;
     }
 
     public boolean checkRate(Double value) {
+        new Actions(driver).pause(500);
         return Double.parseDouble(checkRate.getText().substring(0, checkRate.getText().length()-1).replace(" ", "").replace(',', '.')) == value;
     }
 
