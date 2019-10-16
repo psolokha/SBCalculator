@@ -18,7 +18,10 @@ class ScenarioProperties {
         }
 
         instance = this;
+
+
     }
+
 
     static ScenarioProperties getInstance() {
         return instance == null ? new ScenarioProperties() : instance;

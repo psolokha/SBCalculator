@@ -2,6 +2,7 @@ package pagefiles;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.concurrent.TimeUnit;
 
@@ -12,8 +13,13 @@ public class InitDriver {
 
     private InitDriver(){
         ScenarioProperties properties = ScenarioProperties.getInstance();
-        System.setProperty(properties.getProperty("driver"), properties.getProperty("path"));
-        driver = new ChromeDriver();
+        if (System.getProperties().getProperty("browser").equals("firefox")) {
+            System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver.exe");
+            driver = new FirefoxDriver();
+        } else if (System.getProperties().getProperty("browser").equals("chrome")){
+            System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
+            driver = new ChromeDriver();
+        }
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(Integer.parseInt(properties.getProperty("timeout.pageLoad")), TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(Integer.parseInt(properties.getProperty("timeout.global")), TimeUnit.SECONDS);
