@@ -38,9 +38,6 @@ public class CalculatorPage extends AbstractIndexPage{
     @FindBy(xpath = "//input[@data-test-id = 'youngFamilyDiscount']/ancestor::label/span[@class = 'dcCalc_switch__control']")
     private WebElement youngFamilyCheckbox;
 
-
-
-
     public void switchToCalc() {
         driver.switchTo().frame(0);
     }

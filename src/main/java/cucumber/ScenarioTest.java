@@ -1,21 +1,28 @@
 package cucumber;
 
+import cucumber.api.java.After;
 import cucumber.api.java.ru.Дано;
 import cucumber.api.java.ru.Когда;
 import cucumber.api.java.ru.Тогда;
-import org.junit.AfterClass;
 import org.junit.Assert;
+import org.openqa.selenium.WebDriver;
 import pagefiles.InitDriver;
 import pagefiles.pages.CalculatorPage;
 
 public class ScenarioTest {
 
     private CalculatorPage calc;
+    private WebDriver driver = InitDriver.getInstance();
+
+    @After
+    public void afterClass(){
+        driver.quit();
+    }
 
     @Дано("Открыть сайт \"Сбербанк для физических лиц\"")
     public void openSite(){
         calc = new CalculatorPage();
-        calc.closeCookieWarning();
+//        calc.closeCookieWarning();
     }
 
     @Дано("В верхнем меню навестись на \"(.*)\" - дождаться открытия выпдающего меню и выбрать \"(.*)\"")

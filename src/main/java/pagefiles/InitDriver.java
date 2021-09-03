@@ -6,6 +6,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.concurrent.TimeUnit;
 
+@SuppressWarnings("InstantiationOfUtilityClass")
 public class InitDriver {
 
     private static WebDriver driver;
@@ -13,10 +14,10 @@ public class InitDriver {
 
     private InitDriver(){
         ScenarioProperties properties = ScenarioProperties.getInstance();
-        if (System.getProperties().getProperty("browser").equals("firefox")) {
+        if (properties.getProperty("browser").equals("firefox")) {
             System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver.exe");
             driver = new FirefoxDriver();
-        } else if (System.getProperties().getProperty("browser").equals("chrome")){
+        } else if (properties.getProperty("browser").equals("chrome")){
             System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
             driver = new ChromeDriver();
         }
